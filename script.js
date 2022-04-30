@@ -75,6 +75,7 @@ EditBtn.addEventListener("click",()=>{
     console.log(notesObj[saveTxt]) 
     localStorage.setItem("AllNotes",JSON.stringify(notesObj));
     addTxt.value="";
+    noteTitle.value="";
     addBtn.classList.remove('d-none')
     EditBtn.classList.add("d-none")   
     showNotes();
