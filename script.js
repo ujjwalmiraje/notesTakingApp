@@ -35,8 +35,8 @@ function showNotes(){
     let html="";
     let notes=document.getElementById('notes');
     notesObj.forEach(function(ele,index) {
-     html +=`<div class="noteCard my-2 mx-2 card" style="width: 18rem;">
-     <div class="card-body">
+     html +=`<div id="target" class="noteCard my-2 mx-2 card" style="width: 18rem;">
+     <div class="card-body" >
          <h6 class="card-title">Title: ${ele.title}</h6>
          <p class="card-text">Note: ${ele.note}</p>
          <button onclick="editNote(${index})" class="btn btn-primary">Edit Note</button>
@@ -87,3 +87,20 @@ notesObj.splice(index, 1);
 localStorage.setItem("AllNotes", JSON.stringify(notesObj));
 showNotes();
 }
+// search 
+const searchTxt=document.getElementById('searchTxt');
+searchTxt.addEventListener("input",function(){
+    let target=document.querySelectorAll("#target");
+    Array.from(target).forEach((ele)=>{
+        let cardTxt=ele.getElementsByTagName("h6")[0].innerText;
+        if (cardTxt.includes(searchTxt.value)) {
+                ele.style.display="block"
+             console.log('Yes');
+        }else{
+            ele.style.display="none"
+            console.log('Not');
+        }
+        
+    })
+    
+});
